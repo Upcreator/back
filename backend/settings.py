@@ -7,7 +7,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-import dj_database_url
+
 from pathlib import Path
 import os
 from datetime import timedelta
@@ -29,7 +29,7 @@ DEBUG = True
 
 
 #ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['94.26.225.46', 'localhost']
 
 # Application definition
 INSTALLED_APPS = [
@@ -105,12 +105,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'backend.urls'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-
 STATIC_URL = 'static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -138,7 +134,14 @@ DATABASES = {
 }"""
 
 DATABASES = {
-    'default': dj_database_url.parse("postgres://example_django_render_ezy6_user:PKOj3ohYMOJz9lT8Qcejicw0QEEANDWt@dpg-coa1emq1hbls73fhp9eg-a.oregon-postgres.render.com/example_django_render_ezy6")
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'djangoproject',
+        'USER': 'djangouser',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
 }
 
 # Password validation
@@ -173,7 +176,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
