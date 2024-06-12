@@ -29,7 +29,7 @@ DEBUG = True
 
 
 #ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
-ALLOWED_HOSTS = ['94.26.225.46', 'localhost']
+ALLOWED_HOSTS = []
 
 # Application definition
 INSTALLED_APPS = [
@@ -128,12 +128,15 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-"""database_url = os.environ.get("DATABASE_URL")
 DATABASES = {
-    'default': dj_database_url.parse(database_url)
-}"""
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
-DATABASES = {
+
+"""DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'djangoproject',
@@ -142,7 +145,7 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '',
     }
-}
+}"""
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
